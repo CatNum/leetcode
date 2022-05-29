@@ -1,0 +1,38 @@
+88题
+（1）
+测试用例：
+	nums1 := []int{1,0}
+	nums2 := []int{2}
+	merge(nums1,1,nums2,1)
+func merge(nums1 []int, m int, nums2 []int, n int)  {
+    //逆向双指针，利用nums1中的后半部分空余部分
+	if m == 0 {
+		for i,v  := range nums2 {
+			nums1[i] = v
+		}
+		return
+	}
+    if n == 0{
+        return
+    }
+    i := 1
+    for m != 0 || n != 0{
+        if m == 0{
+            copy(nums1[:n-1],nums2[:n-1])
+            return
+        }
+        if n == 0{
+            return
+        }
+        if nums1[m-1] > nums2[n-1]{
+            nums1[cap(nums1)-i] = nums1[m-1]
+            m--
+            i++
+        }else {
+            nums1[cap(nums1)-i] = nums2[n-1]   //这里有一个测试用例LeetCode会报越界，但是本地编译器不会
+            n--
+            i++
+        }
+    }
+    return
+}
