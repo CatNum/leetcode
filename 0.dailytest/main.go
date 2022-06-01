@@ -1,6 +1,12 @@
 package main
 
+import "fmt"
 
+func main() {
+	nums := []int{5,6,4,3,2,1}
+	mpSort(nums)
+	fmt.Println(nums)
+}
 
 //func sort(nums []int) {
 //	for i,k:=0,0;k<len(nums);k++ {
